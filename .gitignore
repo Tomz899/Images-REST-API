@@ -273,3 +273,5 @@ tags
 main/media/
 
 .pytest_cache/
+
+db.sqlite3

@@ -1,5 +1,3 @@
-from email.mime import image
-
 from rest_framework import serializers
 
 from .models import Image

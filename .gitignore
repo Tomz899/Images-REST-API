@@ -275,3 +275,6 @@ main/media/
 .pytest_cache/
 
 db.sqlite3
+
+.my_pgpass
+.pg_serivce.conf

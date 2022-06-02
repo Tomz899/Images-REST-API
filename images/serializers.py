@@ -5,7 +5,8 @@ from .models import Image
 
 class ImageSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source="img_owner.username")
+    thumbnail = serializers.ReadOnlyField()
 
     class Meta:
         model = Image
-        fields = ["url", "author", "img_owner", "image", "date_added"]
+        fields = ["url", "author", "img_owner", "image", "thumbnail", "date_added"]

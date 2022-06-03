@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "images",
+    "easy_thumbnails",
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,12 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # MEDIA
+
+THUMBNAIL_ALIASES = {
+    "": {
+        "basic": {"size": (150, 150), "crop": True},
+    },
+}
 
 # Path where media is stored
 MEDIA_ROOT = BASE_DIR / "media"

@@ -5,7 +5,8 @@ from .models import Image
 
 class ImageSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source="img_owner.username")
-    thumb = serializers.SerializerMethodField("get_thumb_url")
+    basic_thumb = serializers.SerializerMethodField("get_basic_thumb_url")
+    premium_thumb = serializers.SerializerMethodField("get_premium_thumb_url")
     tier = serializers.ReadOnlyField(source="img_owner.is_basic")
     tier2 = serializers.ReadOnlyField(source="img_owner.is_premium")
     tier3 = serializers.ReadOnlyField(source="img_owner.is_enterprise")
@@ -17,15 +18,22 @@ class ImageSerializer(serializers.ModelSerializer):
             "author",
             "img_owner",
             "image",
-            "thumb",
+            "basic_thumb",
+            "premium_thumb",
             "date_added",
             "tier",
             "tier2",
             "tier3",
         ]
 
-    def get_thumb_url(self, obj):
+    def get_basic_thumb_url(self, obj):
         # Create thumbnail url and add absolute path for working link
         request = self.context.get("request")
-        thumb_url = obj.thumbnail.url
+        thumb_url = obj.basic_thumb.url
+        return request.build_absolute_uri(thumb_url)
+
+    def get_premium_thumb_url(self, obj):
+        # Create thumbnail url and add absolute path for working link
+        request = self.context.get("request")
+        thumb_url = obj.premium_thumb.url
         return request.build_absolute_uri(thumb_url)

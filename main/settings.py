@@ -95,6 +95,9 @@ DATABASES = {
         "PASSWORD": "j-NtCTt11Eaxsw_FooI8n7iX7WPTMPgH",
         "HOST": "tyke.db.elephantsql.com",
         "PORT": "5432",
+        "TEST": {
+            "NAME": "testdb",
+        },
     }
 }
 

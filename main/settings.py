@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
     "images",
-    "easy_thumbnails",
+    "rest_framework",
+    # "easy_thumbnails",
+    "imagekit",
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
@@ -140,11 +142,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # MEDIA
 
-THUMBNAIL_ALIASES = {
-    "": {
-        "basic": {"size": (150, 150), "crop": True},
-    },
-}
+# THUMBNAIL_ALIASES = {
+#     "": {
+#         "basic": {"size": (150, 150), "crop": True},
+#     },
+# }
 
 # Path where media is stored
 MEDIA_ROOT = BASE_DIR / "media"

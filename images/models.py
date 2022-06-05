@@ -3,6 +3,8 @@ from pathlib import Path
 from django.conf import settings  # it's the correct way to import settings
 from django.contrib.auth.models import User
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 # from easy_thumbnails.fields import ThumbnailerImageField
 from PIL import Image as Img
@@ -11,7 +13,12 @@ from PIL import Image as Img
 class Image(models.Model):
     img_owner = models.ForeignKey(User, on_delete=models.CASCADE, default=User)
     image = models.ImageField(null=True, blank=False)
-    # thumbnail = ThumbnailerImageField(upload_to="thumbs", blank=True)
+    thumbnail = ImageSpecField(
+        source="image",
+        processors=[ResizeToFill(150, 150)],
+        format="JPEG",
+        options={"quality": 80},
+    )
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:

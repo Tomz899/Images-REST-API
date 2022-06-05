@@ -33,11 +33,15 @@ Soon
 
 ## Setup
 
--
+1. Create directory for an app.
+'
+2. Git clone repository: https://github.com/Tomz899/Images-REST-API.git
+'
+3. Docker compose up
 
 ## ToDo Bugs
 
--
+- 
 
 ## Contact
 

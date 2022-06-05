@@ -1,7 +1,8 @@
 from pathlib import Path
 
 from django.conf import settings  # it's the correct way to import settings
-from django.contrib.auth.models import User
+
+# from django.contrib.auth.models import User
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -11,11 +12,11 @@ from PIL import Image as Img
 
 
 class Image(models.Model):
-    img_owner = models.ForeignKey(User, on_delete=models.CASCADE, default=User)
+    img_owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=False)
     thumbnail = ImageSpecField(
         source="image",
-        processors=[ResizeToFill(150, 150)],
+        processors=[ResizeToFill(200, 200)],
         format="JPEG",
         options={"quality": 80},
     )

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "users",
     "images",
     "rest_framework",
     # "easy_thumbnails",
@@ -158,3 +159,8 @@ MEDIA_URL = "/media/"
 #     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
 #     "PAGE_SIZE": 10,
 # }
+
+"""
+Overrides the default user model
+"""
+AUTH_USER_MODEL = "users.TierUser"

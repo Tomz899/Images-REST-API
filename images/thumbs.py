@@ -1,6 +1,10 @@
 # from imagekit import ImageSpec
 from imagekit.processors import ResizeToFill
 
+"""
+Dictionary specs for resizing images for user tiers.
+"""
+
 basic_specs = {
     "source": "image",
     "processors": [ResizeToFill(200, 200)],
